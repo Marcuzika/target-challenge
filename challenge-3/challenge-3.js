@@ -1,12 +1,12 @@
-const dados = require("./dados.json");
+const data = require("./dados.json");
 
 let largestBilling = 0;
 let smallestBilling = 0;
 let daysAboveAverage = 0;
 let totalBilling = 0;
-let validDays = dados.length;
+let validDays = data.length;
 
-dados.map((day) => {
+data.map((day) => {
   if (day.valor === 0) {
     validDays -= 1;
   }
@@ -15,7 +15,7 @@ dados.map((day) => {
 
 let average = totalBilling / validDays;
 
-dados.map((day) => {
+data.map((day) => {
   if (day.valor > largestBilling) {
     largestBilling = day.valor;
   }
