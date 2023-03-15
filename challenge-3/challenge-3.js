@@ -3,19 +3,18 @@ const data = require("./dados.json");
 let largestBilling = 0;
 let smallestBilling = 0;
 let daysAboveAverage = 0;
-let totalBilling = 0;
 let validDays = data.length;
 
-data.map((day) => {
-  if (day.valor === 0) {
+const totalBilling = data.reduce((accumulator, currentValue) => {
+  if (currentValue.valor === 0) {
     validDays -= 1;
   }
-  totalBilling += day.valor;
-});
+  return accumulator + currentValue.valor;
+}, 0);
 
 let average = totalBilling / validDays;
 
-data.map((day) => {
+data.forEach((day) => {
   if (day.valor > largestBilling) {
     largestBilling = day.valor;
   }
