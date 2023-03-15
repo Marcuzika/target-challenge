@@ -21,9 +21,10 @@ const states = [
   },
 ];
 
-let total = 0;
-
-states.map((state) => (total += state.valor));
+const total = states.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue.valor;
+}, 0);
+  
 states.map((state) => {
   let percentage = (state.valor * 100) / total;
   percentage = percentage.toFixed(2).replace(".", ",");
